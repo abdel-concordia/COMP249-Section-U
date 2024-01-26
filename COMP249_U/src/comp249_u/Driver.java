@@ -4,7 +4,10 @@ public class Driver {
 
     public static void main(String[] args) {
 
-        System.out.println("Hello World");
+        Person p1 = new Person("Peter", 19, "Montreal");
+        Person p2 = p1;
+
+        System.out.println(p1);
 
     }
 
