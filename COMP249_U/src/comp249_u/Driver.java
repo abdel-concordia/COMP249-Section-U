@@ -4,17 +4,18 @@ public class Driver {
 
     public static void main(String[] args) {
 
-        Person p1 = new Person("Peter", 19, "Montreal");
+        //Address p1Address = new Address(1455, "Maisonneuve West", "H3G", "Montreal");
+        //Person p1 = new Person("Peter", 19, p1Address);
+        //Person p1 = new Person("Peter", 19, new Address(1455, "Maisonneuve West", "H3G", "Montreal"));
+        Person p1 = new Person("Peter", 19, 1455, "Maisonneuve West", "H3G", "Montreal");
 
-        System.out.println(p1);
-        System.out.println(p1);
+        Person p2 = new Person(p1); // Deep copy
 
-    }
+        p2.getAddress().setCityName("Sherbrooke");
 
-    public void someMethod(Person p) {
-        //p.setName("New name");
+        System.out.println("p1 lives in: " + p1.getAddress().getCityName());
 
-        p = new Person("BlaBlah", 5, "Laval");
+        System.out.println("p2 lives in: " + p2.getAddress().getCityName());
 
     }
 }
