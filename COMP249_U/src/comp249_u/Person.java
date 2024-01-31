@@ -17,13 +17,47 @@ public class Person {
         this.address = address;
     }
 
+    public Person(String name, int age) {
+        this(name, age, "");
+    }
+
     public Person() {
-        this.name = "";
-        this.age = 0;
-        this.address = "";
+        this("", 0, "");
+    }
+
+    public Person(Person otherPerson) {
+        this(otherPerson.name, otherPerson.age, otherPerson.address);
     }
 
     // ------ Setters
-    // ------ Getters
-    // ------ toString
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setADdress(String address) {
+        this.address = address;
+    }
+
+// ------ Getters
+    public String getName() {
+        return this.name;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+
+    public String getAddress() {
+        return this.address;
+    }
+
+// ------ toString
+    @Override
+    public String toString() {
+        return this.name + " living in " + this.address + " and their age is: " + this.age;
+    }
 }
