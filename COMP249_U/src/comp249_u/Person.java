@@ -4,11 +4,11 @@ public class Person {
 
     // ------ Data ATtributes
     // Name: String
-    private String name;
+    String name;
     // Age: int
-    private int age;
+    protected int age;
     //Address: String
-    private Address address;
+    protected Address address;
 
     // ------ Constructors
     public Person(String name, int age, Address address) {
@@ -65,10 +65,22 @@ public class Person {
         return this.address;
     }
 
+    /*
 // ------ toString
     @Override
     public String toString() {
         return this.name + " living in " + this.address + " and their age is: " + this.age;
     }
+     */
+    private Person f() {
+        return this;
+    }
 
+    public void g() {
+        f();
+    }
+
+    public final void veryImportantMethod() {
+        // SOme code that should never be modified by derived classes
+    }
 }
