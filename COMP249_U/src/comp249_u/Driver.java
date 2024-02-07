@@ -8,16 +8,6 @@ public class Driver {
                 new Address(123, "Peel", "H3G", "Montreal"),
                 "Comp Science", 4.2);
 
-        System.out.println(s.toString());
-
-        System.out.println(s.getClass());
-        Person p = s;
-
-        System.out.println(p.getClass());
-
-        Object o = p;
-        System.out.println(o.getClass());
-
         //Address p1Address = new Address(1455, "Maisonneuve West", "H3G", "Montreal");
         //Person p1 = new Person("Peter", 19, p1Address);
         //Person p1 = new Person("Peter", 19, new Address(1455, "Maisonneuve West", "H3G", "Montreal"));
