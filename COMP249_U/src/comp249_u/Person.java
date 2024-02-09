@@ -65,14 +65,13 @@ public class Person {
         return this.address;
     }
 
-    /*
 // ------ toString
     @Override
     public String toString() {
         return this.name + " living in " + this.address + " and their age is: " + this.age;
     }
-     */
-    private Person f() {
+
+    protected Person f() {
         return this;
     }
 

@@ -30,11 +30,11 @@ public class Student extends Person {
 
     @Override
     public String toString() {
-        super.toString();
-        return "Student data " + age;
+        return super.toString() + ", student gpa " + gpa;
     }
 
     // B --> A --> Object
+    @Override
     public Student f() {
         g();
         return this; // new Person("Name 1", 10);
@@ -51,4 +51,23 @@ public class Student extends Person {
         // Some new code
     }
      */
+    @Override
+    public boolean equals(Object otherObject) {
+        // Check if the parameter is null (return false)
+        if (otherObject == null) {
+            return false;
+        }
+        // Check if otherObject is of the type of this clss (return false)
+        // instanceof: NEVER USE IT in equals
+        // getClass()
+        if (this.getClass() != otherObject.getClass()) {
+            return false;
+        }
+
+        // Do the comparison
+        Student otherStudent = (Student) otherObject;
+        return ((this.pos.equals(otherStudent.pos) && this.gpa == otherStudent.gpa)
+                && (this.address.equals(otherStudent.address)));
+
+    }
 }
