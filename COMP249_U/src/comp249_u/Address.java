@@ -87,4 +87,9 @@ public class Address {
             return false;
         }
     }
+
+    @Override
+    public Address clone() {
+        return new Address(this);
+    }
 }

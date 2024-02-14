@@ -11,6 +11,10 @@ public class Student extends Person {
         this.gpa = gpa;
     }
 
+    public Student(Student student) {
+        this(student.name, student.age, student.address, student.pos, student.gpa);
+    }
+
     // Setter
     public void setPoS(String pos) {
         this.pos = pos;
@@ -69,5 +73,10 @@ public class Student extends Person {
         return ((this.pos.equals(otherStudent.pos) && this.gpa == otherStudent.gpa)
                 && (this.address.equals(otherStudent.address)));
 
+    }
+
+    @Override
+    protected Student clone() {
+        return new Student(this);
     }
 }

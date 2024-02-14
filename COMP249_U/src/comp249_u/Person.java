@@ -82,4 +82,10 @@ public class Person {
     public final void veryImportantMethod() {
         // SOme code that should never be modified by derived classes
     }
+
+    @Override
+    protected Person clone() {
+        return new Person(this);
+    }
+
 }
