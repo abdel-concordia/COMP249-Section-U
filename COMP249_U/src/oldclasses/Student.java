@@ -1,4 +1,7 @@
-package comp249_u;
+package oldclasses;
+
+import oldclasses.Person;
+import oldclasses.Address;
 
 public class Student extends Person {
 
