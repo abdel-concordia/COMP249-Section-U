@@ -1,4 +1,6 @@
-package comp249_u;
+package oldclasses;
+
+import oldclasses.BadCreditPointsException;
 
 public class Course {
 
