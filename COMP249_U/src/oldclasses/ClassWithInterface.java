@@ -1,4 +1,6 @@
-package comp249_u;
+package oldclasses;
+
+import oldclasses.MyInterface1;
 
 public class ClassWithInterface implements MyInterface1 {
 

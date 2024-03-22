@@ -4,11 +4,32 @@ public class Driver {
 
     public static void main(String[] args) {
 
-        MyInterface1 obj = new ClassWithInterface();
+        I x = new I() { // Anonymous class
+            private int number;
 
-        obj.equals(obj);
+            @Override
+            public void display() {
+                System.out.println("From the anonymous class.");
+            }
+        };
 
-        obj.f();
+        I y = new A();
 
+        x.display();
+        y.display();
+
+    }
+}
+
+interface I {
+
+    public void display();
+}
+
+class A implements I { // Named class
+
+    @Override
+    public void display() {
+        System.out.println("From the named class");
     }
 }
