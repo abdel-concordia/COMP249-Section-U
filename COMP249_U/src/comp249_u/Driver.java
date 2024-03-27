@@ -4,33 +4,19 @@ public class Driver {
 
     public static void main(String[] args) {
 
-    }
+        OurLinkedList list1 = new OurLinkedList();
 
-}
-
-class A {
-
-    private int n;
-    private String s;
-
-    B b;
-
-    public void f() {
-        B b = new B();
-        b.number = 7;
-    }
-
-    public class B { // inner class
-
-        private int number;
-
-        public void g() {
-            int x = n * 2;
-        }
-
-        public class C {
-
-        }
+        list1.addAtHead(5);
+        list1.addAtEnd(25);
+        list1.addAfter(25, 80);
+        //int value = list1.removeHead();
+        //int value = list1.removeEnd();
+        int value = list1.removeAfter(80);
+        //System.out.println(value);
+        //System.out.println(value);
+        //list1.addAtEnd(30);
+        //list1.addAtHead(10);
+        list1.display();
     }
 
 }

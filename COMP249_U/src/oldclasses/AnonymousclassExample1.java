@@ -11,7 +11,7 @@ public class AnonymousclassExample1 {
         }
     };
 
-    I y = new A();
+    I y = new ClassA();
 
     //x.display ();
     // y.display ();
@@ -22,7 +22,7 @@ interface I {
     public void display();
 }
 
-class A implements I { // Named class
+class ClassA implements I { // Named class
 
     @Override
     public void display() {
