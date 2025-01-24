@@ -7,7 +7,7 @@ public class Person {
     // Age (int)
     private int age;
     // Address (String)
-    private String address;
+    private Address address;
 
     // Parameterized constructor
     public Person(String name, int age, String address) {
@@ -18,8 +18,55 @@ public class Person {
 
     // Default constructor
     public Person() {
-        this("No name yet", 0, "No address yet");
+        this("No name yet", 0, "No address yet"); // call the upper constructor (Sting, int, String)
     }
 
     // Copy constructor
+    public Person(Person otherPerson) {
+        this(otherPerson.name, otherPerson.age, otherPerson.address); // Watch out!
+    }
+
+    // Getters
+    public String getName() {
+        return this.name;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+
+    public String getAddress() {
+        return this.address;
+    }
+
+    // Setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean setAge(int age) {
+        if (age >= 0 && age < 150) {
+            this.age = age;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    // toString
+    public String toString() {
+        return "This is " + this.name + " whose age is " + this.age + " and lives in " + this.address;
+    }
+
+    // equals
+    public boolean equals(Person otherPerson) { // will be improved later
+        if (otherPerson == null) {
+            return false;
+        }
+        return this.name.equals(otherPerson.name) && this.age == otherPerson.age;
+    }
 }

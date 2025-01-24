@@ -4,9 +4,9 @@ public class DriverClass {
 
     public static void main(String[] args) {
 
-        Person p1 = new Person();
+        Address ad1 = new Address(-300, "Sherbrook West", "Montreal");
 
-        Person p2 = new Person("John", 15, "Montreal");
+        System.out.println(ad1);
 
     }
 
