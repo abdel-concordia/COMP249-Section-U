@@ -6,19 +6,19 @@ public class Person {
     private String name;
     // Age (int)
     private int age;
-    // Address (String)
+    // Address (class Address)
     private Address address;
 
     // Parameterized constructor
-    public Person(String name, int age, String address) {
+    public Person(String name, int age, Address address) {
         this.name = name;
         this.age = age;
-        this.address = address;
+        this.address = new Address(address);
     }
 
     // Default constructor
     public Person() {
-        this("No name yet", 0, "No address yet"); // call the upper constructor (Sting, int, String)
+        this("No name yet", 0, new Address(0, "Unknown street name", "Unknown city name")); // call the upper constructor (Sting, int, String)
     }
 
     // Copy constructor
@@ -35,8 +35,8 @@ public class Person {
         return this.age;
     }
 
-    public String getAddress() {
-        return this.address;
+    public Address getAddress() {
+        return new Address(this.address); // avoid privacy leak
     }
 
     // Setters
@@ -53,8 +53,8 @@ public class Person {
         }
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddress(Address address) {
+        this.address = new Address(address); // watch out!!
     }
 
     // toString
