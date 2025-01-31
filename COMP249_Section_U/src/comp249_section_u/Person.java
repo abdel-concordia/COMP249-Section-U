@@ -58,8 +58,9 @@ public class Person {
     }
 
     // toString
+    @Override
     public String toString() {
-        return "This is " + this.name + " whose age is " + this.age + " and lives in " + this.address;
+        return super.toString() + " This is " + this.name + " whose age is " + this.age + " and lives in " + this.address;
     }
 
     // equals
@@ -69,4 +70,5 @@ public class Person {
         }
         return this.name.equals(otherPerson.name) && this.age == otherPerson.age;
     }
+
 }
