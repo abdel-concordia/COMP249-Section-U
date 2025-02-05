@@ -1,13 +1,13 @@
 package comp249_section_u;
 
-public class Person {
+public class Person extends Object {
 
     // Name (String)
-    private String name;
+    String name;
     // Age (int)
-    private int age;
+    protected int age;
     // Address (class Address)
-    private Address address;
+    protected Address address;
 
     // Parameterized constructor
     public Person(String name, int age, Address address) {
@@ -64,11 +64,17 @@ public class Person {
     }
 
     // equals
-    public boolean equals(Person otherPerson) { // will be improved later
+    @Override
+    public boolean equals(Object otherObject) { // will be improved later
+
         if (otherPerson == null) {
             return false;
         }
         return this.name.equals(otherPerson.name) && this.age == otherPerson.age;
+    }
+
+    public void f() {
+
     }
 
 }
