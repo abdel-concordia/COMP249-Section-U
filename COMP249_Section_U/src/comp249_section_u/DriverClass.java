@@ -4,44 +4,28 @@ public class DriverClass {
 
     public static void main(String[] args) {
 
-//        Address ad1 = new Address(300, "Sherbrook West", "Montreal");
-//        Student s1 = new Student("John", 10, ad1, "123", 0.0);
-//
-//        Person p1 = new Person("ALi", 7, ad1);
-//
-//        System.out.println(p1);
-        A a = new A();
-        System.out.println(a.x);
+        Address ad1 = new Address(300, "Sherbrook West", "Montreal");
 
-        B b = new B();
-        System.out.println(b.x);
+        Person p1 = new Person("John", 20, ad1);
 
-        System.out.println(a.x);
+        Student s1 = new Student("Ali", 17, ad1, "1234", 3.4);
+
+        boolean b = p1.equals(new String());
 
     }
 }
 
 class A {
 
-    static int x;
-
-    public A() {
-        x++;
-    }
-
-    public static void f() {
-
-    }
+    int x;
 }
 
 class B extends A {
 
-    public B() {
-        x++;
-    }
+    int y;
+}
 
-    @Override
-    public static void f() {
+class C extends B {
 
-    }
+    int z;
 }

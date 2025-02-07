@@ -66,10 +66,20 @@ public class Person extends Object {
     // equals
     @Override
     public boolean equals(Object otherObject) { // will be improved later
-
-        if (otherPerson == null) {
+        // Check if the parameter is null, if yes, return false
+        if (otherObject == null) {
             return false;
         }
+        // Check if otherObject is referencing a Person. If no, return false
+        if (this.getClass() != otherObject.getClass()) {
+            return false;
+        }
+
+        // At this point, we are sure the object referenced by otherObject is a Person
+        // Cast it to a reference of type Person
+        Person otherPerson = (Person) otherObject;
+
+        // Let's compare
         return this.name.equals(otherPerson.name) && this.age == otherPerson.age;
     }
 

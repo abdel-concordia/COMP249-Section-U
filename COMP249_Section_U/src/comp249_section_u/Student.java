@@ -14,6 +14,7 @@ public class Student extends Person {
     public Student(String name, int age, Address address, String ID, double gpa) {
         // Construct the inherited part (call Person constructor)
         super(name, age, address);
+
         // COnstruct the part added by Student
         this.ID = ID;
         this.gpa = gpa;
@@ -47,7 +48,12 @@ public class Student extends Person {
     // toString
     @Override
     public String toString() {
-        return super.toString() + " who is a Student with ID " + this.ID + " and GPA = " + this.gpa;
+        return "This is " + this.name + " who is a Student with ID " + this.ID + " and GPA = " + this.gpa;
+    }
+
+    @Override
+    public void f() {
+
     }
 
 }
