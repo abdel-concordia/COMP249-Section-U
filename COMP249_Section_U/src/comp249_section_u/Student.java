@@ -45,6 +45,28 @@ public class Student extends Person {
     }
 
     // equals
+    @Override
+    public boolean equals(Object otherObject) {
+        // CHeck if parameter is null
+        if (otherObject == null) {
+            return false;
+        }
+
+        // Check if otherObject is referencing an object Student
+        if (this.getClass() != otherObject.getClass()) {
+            return false;
+        }
+
+        // Cast
+        Student otherStudent = (Student) otherObject;
+
+        // Compare (Note: == is not good to compare doubles)
+        // Do the subtraction and see if it is too small (smaller than a threshold)
+        final double THRESHOLD = 0.000001;
+        return (Math.abs(this.gpa - otherStudent.gpa)) < THRESHOLD;
+
+    }
+
     // toString
     @Override
     public String toString() {
