@@ -20,6 +20,10 @@ public class Student extends Person {
         this.gpa = gpa;
     }
 
+    public Student(Student otherStudent) {
+        this(otherStudent.name, otherStudent.age, otherStudent.address, otherStudent.ID, otherStudent.gpa);
+    }
+
     public Student(String ID, double gpa) {
         // super();
         this.ID = ID;
@@ -76,5 +80,10 @@ public class Student extends Person {
     @Override
     public void f() {
         System.out.println("f in Student");
+    }
+
+    @Override
+    public Object clone() { // or public Object clone()
+        return new Student(this);
     }
 }

@@ -8,19 +8,12 @@ public class DriverClass {
 
         Address ad1 = new Address(300, "Sherbrook West", "Montreal");
 
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Please input a number: ");
+        Student s1 = new Student("Ali", 17, ad1, "1234", 3.4);
 
-        int number = sc.nextInt();
+        Person p = new Person("John", 10, ad1);
 
-        Person p1;
-        if (number < 10) {
-            p1 = new Person("John", 10, ad1);
-        } else {
-            p1 = new Student("Ali", 17, ad1, "1234", 3.4);
-        }
-
-        // p1 is referncing what????
-        p1.f();
+        Person p2 = new Person(s1); // Will create copy as Person object
+        Student p3 = (Student) s1.clone(); // will create a copy of Student
     }
+
 }
