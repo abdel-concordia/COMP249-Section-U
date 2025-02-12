@@ -3,7 +3,7 @@ package comp249_section_u;
 public class Person extends Object {
 
     // Name (String)
-    String name;
+    protected String name;
     // Age (int)
     protected int age;
     // Address (class Address)
@@ -84,7 +84,7 @@ public class Person extends Object {
     }
 
     public void f() {
-
+        System.out.println("f in Person");
     }
 
 }
