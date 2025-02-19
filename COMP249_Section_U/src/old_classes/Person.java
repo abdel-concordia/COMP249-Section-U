@@ -1,4 +1,4 @@
-package comp249_section_u;
+package old_classes;
 
 public class Person extends Object {
 

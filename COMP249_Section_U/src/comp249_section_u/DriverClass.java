@@ -1,19 +1,25 @@
 package comp249_section_u;
 
-import java.util.Scanner;
-
 public class DriverClass {
 
     public static void main(String[] args) {
 
-        Address ad1 = new Address(300, "Sherbrook West", "Montreal");
+        final int NUMBER_OF_ANIMALS = 3;
+        Animal[] animals = new Animal[NUMBER_OF_ANIMALS];
 
-        Student s1 = new Student("Ali", 17, ad1, "1234", 3.4);
+        // animals[0] = new Animal("Yellow"); // Cannot create objects out of an Abstract class
+        animals[0] = new Bird("Green", 7);
+        animals[1] = new Bird("Multi", 9);
+        animals[2] = new Fish("Gray");
 
-        Person p = new Person("John", 10, ad1);
+        for (int i = 0; i < NUMBER_OF_ANIMALS; i++) {
+            animals[i].move();
+        }
 
-        Person p2 = new Person(s1); // Will create copy as Person object
-        Student p3 = (Student) s1.clone(); // will create a copy of Student
+        // Enhanced loop
+        for (Animal a : animals) {
+            a.move();
+        }
     }
 
 }
