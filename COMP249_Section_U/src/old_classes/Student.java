@@ -1,5 +1,7 @@
 package old_classes;
 
+import comp249_section_u.Person;
+
 public class Student extends Person {
 
     // Name

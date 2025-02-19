@@ -1,4 +1,6 @@
-package old_classes;
+package comp249_section_u;
+
+import old_classes.Address;
 
 public class Person extends Object {
 
@@ -10,19 +12,22 @@ public class Person extends Object {
     protected Address address;
 
     // Parameterized constructor
-    public Person(String name, int age, Address address) {
+    public Person(String name, int age, Address address) throws Exception {
         this.name = name;
-        this.age = age;
+        if (age < 0) {
+            throw new Exception("Bad age value!");
+        }
         this.address = new Address(address);
     }
 
     // Default constructor
-    public Person() {
+    public Person() throws Exception {
         this("No name yet", 0, new Address(0, "Unknown street name", "Unknown city name")); // call the upper constructor (Sting, int, String)
+
     }
 
     // Copy constructor
-    public Person(Person otherPerson) {
+    public Person(Person otherPerson) throws Exception {
         this(otherPerson.name, otherPerson.age, otherPerson.address); // Watch out!
     }
 

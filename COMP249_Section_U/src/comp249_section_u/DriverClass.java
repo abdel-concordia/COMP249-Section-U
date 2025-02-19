@@ -1,25 +1,26 @@
 package comp249_section_u;
 
+import old_classes.Address;
+
 public class DriverClass {
 
     public static void main(String[] args) {
 
-        final int NUMBER_OF_ANIMALS = 3;
-        Animal[] animals = new Animal[NUMBER_OF_ANIMALS];
+        Address ad = new Address(123, "Sherbrooke", "Montreal");
 
-        // animals[0] = new Animal("Yellow"); // Cannot create objects out of an Abstract class
-        animals[0] = new Bird("Green", 7);
-        animals[1] = new Bird("Multi", 9);
-        animals[2] = new Fish("Gray");
-
-        for (int i = 0; i < NUMBER_OF_ANIMALS; i++) {
-            animals[i].move();
+        try {
+            System.out.println("Before call to constructor");
+            Person p = new Person("John", 10, ad);
+            System.out.println("After call to constructor");
+            int x = 5;
+            int y = 0;
+            int z = x / y;
+        } catch (ArithmeticException aex) {
+            System.out.println("Canno do the division: " + aex.getMessage());
+        } catch (Exception ex) {
+            System.out.println("Cannot create person: " + ex.getMessage());
         }
 
-        // Enhanced loop
-        for (Animal a : animals) {
-            a.move();
-        }
     }
 
 }
