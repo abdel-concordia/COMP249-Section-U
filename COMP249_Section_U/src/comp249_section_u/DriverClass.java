@@ -1,25 +1,45 @@
 package comp249_section_u;
 
-import old_classes.Address;
+import java.io.FileInputStream;
+import java.io.PrintWriter;
+import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class DriverClass {
 
     public static void main(String[] args) {
 
-        Address ad = new Address(123, "Sherbrooke", "Montreal");
-
+        /*
+        // Create the PrintWriter stream
+        PrintWriter output = null;
         try {
-            System.out.println("Before call to constructor");
-            Person p = new Person("John", -10, ad);
-            System.out.println("After call to constructor");
-            int x = 5;
-            int y = 0;
-            int z = x / y;
-        } catch (ArithmeticException aex) {
-            System.out.println("Canno do the division: " + aex.getMessage());
-        } catch (AgeException aex) {
-            System.out.println("Cannot create person: " + aex.getMessage() + "(" + aex.getMinAge() + " and " + aex.getMaxAge() + ")");
+            output = new PrintWriter(new FileOutputStream("myfile.txt"));
+        } catch (FileNotFoundException fnfex) {
+            System.out.println("Cannot open the file for writing.");
+            System.exit(0);
         }
+        // Write
+        output.print("Hello");
+        output.println(" World");
+        output.print("Hi");
+        // Close
+        output.close();
+         */
+        // Create the Scanner
+        Scanner sc = null;
+        try {
+            sc = new Scanner(new FileInputStream("myfile.txt"));
+        } catch (FileNotFoundException fnfex) {
+            System.out.println("Cannot open the input file.");
+        }
+        // Read
+        while (sc.hasNext()) {
+            String s = sc.nextLine();
+            System.out.println(s);
+        }
+        // Close
+        sc.close();
 
     }
 
