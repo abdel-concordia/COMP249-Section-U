@@ -12,10 +12,10 @@ public class Person extends Object {
     protected Address address;
 
     // Parameterized constructor
-    public Person(String name, int age, Address address) throws Exception {
+    public Person(String name, int age, Address address) throws AgeException {
         this.name = name;
         if (age < 0) {
-            throw new Exception("Bad age value!");
+            throw new AgeException("Provided age is not within limits.");
         }
         this.address = new Address(address);
     }
