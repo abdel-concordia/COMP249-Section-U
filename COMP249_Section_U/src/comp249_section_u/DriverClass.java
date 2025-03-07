@@ -7,12 +7,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 public class DriverClass {
 
     public static void main(String[] args) {
 
-        /*
         // Writing to a binary file
         // Open the file
         ObjectOutputStream oos = null;
@@ -26,11 +26,14 @@ public class DriverClass {
             System.exit(0);
         }
         // Write to the file
-        int a = 5, b = 10, c = 20;
+
         try {
-            oos.writeInt(a);
-            oos.writeInt(b);
-            oos.writeInt(c);
+            A a = new A(3);
+
+            oos.writeObject(a);
+
+            oos.writeObject(new A(10));
+
         } catch (IOException ioex) {
             System.out.println("Cannot read from file.");
             System.exit(0);
@@ -42,7 +45,6 @@ public class DriverClass {
             System.out.println("Cannot close the file.");
         }
 
-         */
         // Reading from a binary
         // Open the file for input
         ObjectInputStream ois = null;
@@ -56,8 +58,9 @@ public class DriverClass {
         // Read from file
         while (true) {
             try {
-                int num = ois.readInt();
-                System.out.println(num);
+                A obj1 = (A) ois.readObject();
+
+                System.out.println(obj1);
             } catch (EOFException eofex) {
                 break;
             } catch (IOException ioex) {
@@ -72,6 +75,16 @@ public class DriverClass {
         } catch (IOException ioex) {
             System.out.println("Cannot close the file.");
         }
+
     }
 
+}
+
+class A implements Serializable {
+
+    private int number;
+
+    public A(int number) {
+        this.number = number;
+    }
 }
