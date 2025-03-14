@@ -10,3 +10,7 @@ public interface MyInterface {
         System.out.println("Default implementation in MyInterface");
     }
 }
+
+interface MyInterface2 extends MyInterface {
+
+}

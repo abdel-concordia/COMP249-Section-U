@@ -9,7 +9,3 @@ public abstract class MyClass extends Object implements MyInterface {
 
     abstract void f3();
 }
-
-abstract class A extends MyClass {
-
-}

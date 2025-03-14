@@ -1,7 +1,5 @@
 package old_classes;
 
-import comp249_section_u.Person;
-
 public class Student extends Person {
 
     // Name
@@ -13,7 +11,7 @@ public class Student extends Person {
     private double gpa;
 
     // Constructors
-    public Student(String name, int age, Address address, String ID, double gpa) {
+    public Student(String name, int age, Address address, String ID, double gpa) throws AgeException {
         // Construct the inherited part (call Person constructor)
         super(name, age, address);
 
@@ -22,11 +20,11 @@ public class Student extends Person {
         this.gpa = gpa;
     }
 
-    public Student(Student otherStudent) {
+    public Student(Student otherStudent) throws AgeException {
         this(otherStudent.name, otherStudent.age, otherStudent.address, otherStudent.ID, otherStudent.gpa);
     }
 
-    public Student(String ID, double gpa) {
+    public Student(String ID, double gpa) throws Exception, AgeException {
         // super();
         this.ID = ID;
         this.gpa = gpa;
@@ -84,8 +82,10 @@ public class Student extends Person {
         System.out.println("f in Student");
     }
 
+    /*
     @Override
     public Object clone() { // or public Object clone()
         return new Student(this);
     }
+     */
 }
