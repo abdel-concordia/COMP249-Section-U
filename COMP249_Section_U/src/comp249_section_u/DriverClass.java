@@ -4,32 +4,28 @@ public class DriverClass {
 
     public static void main(String[] args) {
 
+        MyInterface obj1 = new MyInterface() { // object out of an anonymous class
+
+            @Override
+            public void f() {
+
+            }
+        };
+
     }
 
 }
 
-class A {
+interface MyInterface {
 
-    private int x;
-
-    public void f() {
-
-    }
-
-    class B {
-
-        void g() {
-            f(); // this calls f in B
-            A.this.f(); // this calls f in A
-        }
-
-        void f() {
-
-        }
-
-    }
+    void f();
 }
 
-class C extends B {
+class A implements I { // named class
 
 }
+
+// Interfaces can be implemented in 3 ways:
+// 1. Named class
+// 2. ANonymous class
+// 3. Lambda expression (search for lambda expression and functional interfaces)
