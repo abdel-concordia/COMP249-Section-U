@@ -113,7 +113,7 @@ public class LinkedList {
 
     // removeAfter
     // removeBefore
-    // Find
+    // contains (returns true or false)
     // Display
     public void display() {
         if (head == null) {
