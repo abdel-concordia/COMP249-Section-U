@@ -32,7 +32,7 @@ public class LinkedList {
         } else {
 
             Node newNode = new Node(value, null);
-            tail.setLink(newNode);
+            tail.link = newNode;
             tail = newNode;
 
             numberOfElements++;
@@ -49,8 +49,8 @@ public class LinkedList {
 
         Node position = head;
 
-        while (!position.getData().equals(referenceValue)) { // Watch out
-            position = position.getLink();
+        while (!position.data.equals(referenceValue)) { // Watch out
+            position = position.link;
 
             if (position == null) { // DId not find the reference value and reached end of list
                 System.out.println("The refernce value " + referenceValue + " does not exist.");
@@ -58,8 +58,8 @@ public class LinkedList {
             }
         }
 
-        Node newNode = new Node(newValue, position.getLink());
-        position.setLink(newNode);
+        Node newNode = new Node(newValue, position.link);
+        position.link = newNode;
 
         if (position == tail) {
             tail = newNode;
@@ -71,6 +71,24 @@ public class LinkedList {
     // addBefore
     public void addBefore(String referenceValue, String newValue) { // Can affect the head
 
+        if (head == null) {
+            System.out.println("Your list is empty. Cannot add before.");
+        } else if (head.data.equals(referenceValue)) {
+            addAtHead(newValue);
+        } else {
+            Node position = head;
+            while (position.link != null && !position.link.data.equals(referenceValue)) {
+                position = position.link;
+            }
+            // Did not find the reference value
+            if (position.link == null) {
+                System.out.println("Your reference value to add before does not exist.");
+            } else {// Did find the reference value
+                Node newNode = new Node(newValue, position.link);
+                position.link = newNode;
+                numberOfElements++;
+            }
+        }
     }
 
     // Remove
@@ -79,8 +97,8 @@ public class LinkedList {
         if (head == null) {
             return null; // Better, throw an Exception
         } else {
-            String value = head.getData();
-            head = head.getLink();
+            String value = head.data;
+            head = head.link;
             numberOfElements--;
 
             if (numberOfElements == 0) { // Check this later
@@ -100,11 +118,11 @@ public class LinkedList {
             return removeFirst();
         } else {
             Node position = head;
-            while (position.getLink() != tail) {
-                position = position.getLink();
+            while (position.link != tail) {
+                position = position.link;
             }
-            String value = tail.getData();
-            position.setLink(null);
+            String value = tail.data;
+            position.link = null; // position.setLink(x) --> position.link = x
             tail = position;
             numberOfElements--;
             return value;
@@ -112,8 +130,56 @@ public class LinkedList {
     }
 
     // removeAfter
+    public String removeAfter(String referenceValue) {
+        if (head == null) {
+            System.out.println("The list is empty.");
+        } else {
+            Node position = head;
+            while (position.link != null && !position.data.equals(referenceValue)) {
+                position = position.link;
+            }
+
+// Reference value not found
+            if (position.link == null) {
+                System.out.println("There is no value after " + referenceValue);
+                return null; // throw an exception
+            } else {// Reference value found
+
+                // Is the element to remove is the tail?
+                if (position == tail) {
+
+                }
+            }
+        }
+    }
+
     // removeBefore
     // contains (returns true or false)
+    public boolean contains(String value) { // checkes if the list contains a specific value/data
+        Node position = head;
+        while (position != null) {
+            if (position.data.equals(value)) {
+                return true;
+            }
+            position = position.link;
+        }
+        return false;
+    }
+
+    // get element at specific index
+    public String get(int index) {
+        if (index >= numberOfElements) {
+            System.out.println("The index is bigger than the number of elements.");
+            return null; // or throw an exception
+        } else {
+            Node position = head;
+            for (int i = 0; i < index; i++) {
+                position = position.link;
+            }
+            return position.data; // watch out if not immutable
+        }
+    }
+
     // Display
     public void display() {
         if (head == null) {
@@ -123,13 +189,45 @@ public class LinkedList {
             Node position = head;
             while (position != null) {
                 System.out.println(position);
-                position = position.getLink();
+                position = position.link;
             }
         }
     }
 
     // Return the size (number of elements in the linked list)
-    public int getSize() { // Please review
+    public int getSize() {
         return numberOfElements;
+    }
+
+    // Node is a private inner class of LinkedList
+    //
+    private class Node {
+
+        private String data;
+        private Node link;
+
+        public Node(String data, Node link) {
+            this.data = data;
+            this.link = link;
+        }
+
+        @Override
+        public String toString() {
+            return "Data is: " + this.data;
+        }
+
+        @Override
+        public boolean equals(Object otherObject) {
+            Node otherData = (Node) otherObject;
+            return this.data.equals(otherData.data);
+        }
+    }
+}
+
+class A {
+
+    private class B {
+
+        private int x;
     }
 }
