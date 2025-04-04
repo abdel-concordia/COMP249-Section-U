@@ -1,12 +1,12 @@
 package comp249_section_u;
 
-public class LinkedList {
+public class DLinkedList {
 
-    private Node head; // MUST HAVE
-    private Node tail; // Optional: good for performance if addAtTail is used frequently
+    private Node head; // MUST/SHOULD HAVE
+    private Node tail; // MUST/SHOULD have
     private int numberOfElements; // Optional: good for performance, mainly with getSize
 
-    public LinkedList() {
+    public DLinkedList() {
         this.head = null;
         this.tail = null;
         numberOfElements = 0;
@@ -15,7 +15,11 @@ public class LinkedList {
     // Add
     // addAtHead (head will change)
     public void addAtHead(String value) {
-        head = new Node(value, head);
+        Node n = new Node(null, value, head);
+        if (numberOfElements != 0) {
+            head.previous = n;
+        }
+        head = n;
         numberOfElements++;
 
         // If this is the first element, adjust tail
@@ -30,11 +34,9 @@ public class LinkedList {
         if (head == null) {
             addAtHead(value);
         } else {
-
-            Node newNode = new Node(value, null);
-            tail.link = newNode;
+            Node newNode = new Node(tail, value, null);
+            tail.next = newNode;
             tail = newNode;
-
             numberOfElements++;
         }
     }
@@ -50,16 +52,18 @@ public class LinkedList {
         Node position = head;
 
         while (!position.data.equals(referenceValue)) { // Watch out
-            position = position.link;
+            position = position.next;
 
-            if (position == null) { // DId not find the reference value and reached end of list
+            if (position == null) { // Did not find the reference value and reached end of list
                 System.out.println("The refernce value " + referenceValue + " does not exist.");
                 return;
             }
         }
 
-        Node newNode = new Node(newValue, position.link);
-        position.link = newNode;
+        Node newNode = new Node(position, newValue, position.next);
+
+        position.next.previous = newNode; // Watch out
+        position.next = newNode;
 
         if (position == tail) {
             tail = newNode;
@@ -68,6 +72,7 @@ public class LinkedList {
         numberOfElements++;
     }
 
+    /*
     // addBefore
     public void addBefore(String referenceValue, String newValue) { // Can affect the head
 
@@ -91,44 +96,51 @@ public class LinkedList {
         }
     }
 
+     */
     // Remove
     // removeFirst (remove the first element in the list) (head will change)
     public String removeFirst() { // Might affect the tail if the list has one element
         if (head == null) {
             return null; // Better, throw an Exception
-        } else {
+        } else { // Can we simplify further??
             String value = head.data;
-            head = head.link;
+
+            if (numberOfElements == 1) {
+                head = null;
+                tail = null;
+                numberOfElements--;
+                return value;
+            }
+            // What comes after is the implicit else
+            head = head.next;
+            head.previous = null;
+
             numberOfElements--;
 
-            if (numberOfElements == 0) { // Check this later
-                tail = null;
-            }
             return value;
         }
     }
 
     // removeLast (remove the last element in the list)
     public String removeLast() {
-        if (head == null) {
+        if (tail == null) {
             System.out.println("Cannot remove from an empty list.");
             return null;
         }
         if (numberOfElements == 1) {
             return removeFirst();
         } else {
-            Node position = head;
-            while (position.link != tail) {
-                position = position.link;
-            }
             String value = tail.data;
-            position.link = null; // position.setLink(x) --> position.link = x
-            tail = position;
+
+            tail = tail.previous;
+            tail.next = null;
+
             numberOfElements--;
             return value;
         }
     }
 
+    /*
     // removeAfter
     public String removeAfter(String referenceValue) {
         if (head == null) {
@@ -188,16 +200,30 @@ public class LinkedList {
         }
     }
 
+     */
     // Display
-    public void display() {
+    public void displayForward() {
         if (head == null) {
             System.out.println("The list has no elements.");
         } else {
-            System.out.println("Your list has " + numberOfElements + " elements:");
+            System.out.println("These are your " + numberOfElements + " element(s): ");
             Node position = head;
             while (position != null) {
                 System.out.println(position);
-                position = position.link;
+                position = position.next;
+            }
+        }
+    }
+
+    public void displayBackward() {
+        if (tail == null) {
+            System.out.println("The list has no elements.");
+        } else {
+            System.out.println("These are your " + numberOfElements + " element(s) backward: ");
+            Node position = tail;
+            while (position != null) {
+                System.out.println(position);
+                position = position.previous;
             }
         }
     }
@@ -212,11 +238,13 @@ public class LinkedList {
     private class Node {
 
         private String data;
-        private Node link;
+        private Node next;
+        private Node previous;
 
-        public Node(String data, Node link) {
+        public Node(Node previous, String data, Node next) {
+            this.previous = previous;
             this.data = data;
-            this.link = link;
+            this.next = next;
         }
 
         @Override
